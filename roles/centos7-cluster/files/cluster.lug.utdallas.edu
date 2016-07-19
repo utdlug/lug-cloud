@@ -1,0 +1,17 @@
+$TTL 10m
+
+@ IN SOA cluster-master.cluster.lug.utdallas.edu. lugadmins.utdallas.edu. (
+	2015122100
+	1h	;refresh
+	3m	;retry
+	2w	;expire
+	1h )	;negative cache
+
+	IN NS	cluster-master.cluster.lug.utdallas.edu
+	IN A	172.16.42.1
+
+cluster-master	IN A	172.16.42.1
+cluster-node	IN A	172.16.42.2
+
+m	IN CNAME	cluster-master
+n	IN CNAME	cluster-node

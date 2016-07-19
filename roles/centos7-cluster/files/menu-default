@@ -1,0 +1,14 @@
+# create new
+timeout 100
+default menu.c32
+
+menu title PXE Boot Menu
+label 1
+      menu label ^1) Boot from local drive
+      localboot
+
+label 2
+      menu label ^2) Install CentOS 7
+      kernel centos7/vmlinuz
+      append initrd=centos7/initrd.img method=http://172.16.42.1/centos7 devfs=nomount ks=http://172.16.42.1/kickstart/node.ks
+      

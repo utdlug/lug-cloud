@@ -1,0 +1,13 @@
+$TTL 3h
+
+@ IN SOA cluster-master.cluster.lug.utdallas.edu lugadmins.utdallas.edu. (
+	2015120600
+	3h	;refresh
+	1h	;retry
+	1w	;expire
+	1h )	;negative cache
+
+	IN NS	cluster-master.cluster.lug.utdallas.edu.
+
+1	IN PTR	cluster-master.cluster.lug.utdallas.edu.
+2	IN PTR	cluster-node.cluster.lug.utdallas.edu.

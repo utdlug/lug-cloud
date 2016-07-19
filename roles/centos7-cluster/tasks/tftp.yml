@@ -1,0 +1,81 @@
+---
+- name: Copy TFTP Xinetd Config
+  copy: src=tftp dest=/etc/xinetd.d/tftp owner=root group=root mode=0640
+
+- name: Making CentOS Repo Directory
+  file: path=/var/pxe/centos7 state=directory
+  
+- name: Make CentOS TFTP Directory
+  file: path=/var/lib/tftpboot/centos7 state=directory
+
+- name: Make CentOS ISO Directory
+  file: path=/opt/centos/iso state=directory
+
+- name: Make CentOS Kickstart Directory
+  file: path=/opt/centos/kickstart state=directory
+
+#- name: Copy CentOS Iso
+#  copy: src=centos.iso dest=/opt/centos/iso/centos.iso
+
+- name: Copy CentOS Kickstart
+  copy: src=node.ks dest=/opt/centos/kickstart/node.ks
+
+- name: Copy httpd Virtual Host PXE Boot
+  copy: src=httpd-pxeboot.conf dest=/etc/httpd/conf.d/pxeboot.conf
+
+- name: Copy httpd Virtual Host Kickstart
+  copy: src=httpd-kickstart.conf dest=/etc/httpd/conf.d/kickstart.conf
+
+- name: Copy default
+  copy: src=menu-default dest=/var/lib/tftpboot/pxelinux.cfg/default
+
+- name: Update fstab
+  lineinfile: dest=/etc/fstab state=present line="/opt/centos/iso/centos.iso	/var/pxe/centos7	iso9660	ro	0	0"
+  notify:
+    - fstab
+
+- name: Update mounts
+  command: mount -a
+
+- name: Copy vmlinuz
+  command: cp /var/pxe/centos7/images/pxeboot/vmlinuz /var/lib/tftpboot/centos7/
+
+- name: Copy initrd.img
+  command: cp /var/pxe/centos7/images/pxeboot/initrd.img /var/lib/tftpboot/centos7/ 
+
+- name: Copy pxelinux.0
+  command: cp /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
+
+- name: Copy menu.c32
+  command: cp /usr/share/syslinux/menu.c32 /var/lib/tftpboot/
+
+- name: Copy memdisk
+  command: cp /usr/share/syslinux/memdisk /var/lib/tftpboot/
+
+- name: Copy mboot.c32
+  command: cp /usr/share/syslinux/mboot.c32 /var/lib/tftpboot/
+
+- name: Copy chain.c32
+  command: cp /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
+
+- name: Add ip_conntrack_tftp
+  lineinfile: dest=/etc/modprobe.d/tftp.conf line="ip_conntrack_tftp" create=yes
+
+- name: Enable TFTP
+  service: name=tftp enabled=yes
+
+- name: Start TFTP
+  service: name=tftp state=restarted
+
+- name: Enable Xinetd
+  service: name=xinetd enabled=yes
+
+- name: Start Xinetd
+  service: name=xinetd state=restarted
+
+- name: Enable httpd
+  service: name=httpd enabled=yes
+
+- name: Start httpd
+  service: name=httpd state=restarted
+

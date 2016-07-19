@@ -1,0 +1,15 @@
+---
+- name: iptables
+  command: /sbin/ifup-local
+
+- name: unbound
+  service: name=unbound state=reloaded
+
+- name: nsd
+  service: name=nsd state=reloaded
+
+- name: dhcp
+  service: name=dhcpd state=restarted
+
+- name: fstab
+  command: mount -a
