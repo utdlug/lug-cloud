@@ -13,3 +13,9 @@
 
 - name: fstab
   command: mount -a
+
+- name: httpd
+  service: name=httpd state=restarted
+
+- name: tftp
+  service: name=tftp state=restarted
