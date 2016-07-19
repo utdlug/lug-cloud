@@ -1,7 +1,7 @@
 $TTL 10m
 
 @ IN SOA cluster-master.cluster.lug.utdallas.edu. lugadmins.utdallas.edu. (
-	2015122100
+	2016071900
 	1h	;refresh
 	3m	;retry
 	2w	;expire
@@ -11,7 +11,25 @@ $TTL 10m
 	IN A	172.16.42.1
 
 cluster-master	IN A	172.16.42.1
-cluster-node	IN A	172.16.42.2
-
-m	IN CNAME	cluster-master
-n	IN CNAME	cluster-node
+lug-clusterStorage IN A 172.16.42.2 
+lug-cluster00 IN A 172.16.42.3
+lug-cluster01 IN A 172.16.42.4
+lug-cluster02 IN A 172.16.42.5
+lug-cluster03 IN A 172.16.42.6
+lug-cluster04 IN A 172.16.42.7
+lug-cluster05 IN A 172.16.42.8
+lug-cluster06 IN A 172.16.42.9
+lug-cluster07 IN A 172.16.42.10
+lug-cluster08 IN A 172.16.42.11
+lug-cluster09 IN A 172.16.42.12
+lug-cluster10 IN A 172.16.42.13
+lug-cluster11 IN A 172.16.42.14
+lug-cluster12 IN A 172.16.42.15
+lug-cluster13 IN A 172.16.42.16
+lug-cluster14 IN A 172.16.42.17
+lug-cluster16 IN A 172.16.42.18
+lug-cluster17 IN A 172.16.42.19
+lug-cluster18 IN A 172.16.42.20
+lug-cluster19 IN A 172.16.42.21
+lug-cluster20 IN A 172.16.42.22
+lug-cluster21 IN A 172.16.42.23

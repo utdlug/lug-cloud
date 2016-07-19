@@ -9,19 +9,19 @@
   register: repo
 
 - name: Make CentOS Repo Directory
-  file: path=/var/pxe/centos7 state=directory owner=root group=root mode=0644
+  file: path=/var/pxe/centos7 state=directory owner=root group=root mode=0755
   when: not repo.stat.exists
 
 - name: Make CentOS TFTP Directory
-  file: path=/var/lib/tftpboot/centos7 state=directory owner=root group=root mode=0644
+  file: path=/var/lib/tftpboot/centos7 state=directory owner=root group=root mode=0755
   notify:
     - tftp
 
 - name: Make CentOS ISO Directory
-  file: path=/opt/centos/iso state=directory owner=root group=root mode=0644
+  file: path=/opt/centos/iso state=directory owner=root group=root mode=0755
 
 - name: Make CentOS Kickstart Directory
-  file: path=/opt/centos/kickstart state=directory owner=root group=root mode=0644
+  file: path=/opt/centos/kickstart state=directory owner=root group=root mode=0755
 
 - name: Stat CentOS Iso
   stat: path=/opt/centos/iso/centos.iso
