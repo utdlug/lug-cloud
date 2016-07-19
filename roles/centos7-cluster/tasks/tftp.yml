@@ -4,38 +4,48 @@
   notify:
     - xinetd
 
-- name: Making CentOS Repo Directory
-  file: path=/var/pxe/centos7 state=directory
-  
+- name: Check CentOS Repo Directory
+  stat: path=/var/pxe/centos7
+  register: repo
+
+- name: Make CentOS Repo Directory
+  file: path=/var/pxe/centos7 state=directory owner=root group=root mode=0644
+  when: not repo.stat.exists
+
 - name: Make CentOS TFTP Directory
-  file: path=/var/lib/tftpboot/centos7 state=directory
+  file: path=/var/lib/tftpboot/centos7 state=directory owner=root group=root mode=0644
   notify:
     - tftp
 
 - name: Make CentOS ISO Directory
-  file: path=/opt/centos/iso state=directory
+  file: path=/opt/centos/iso state=directory owner=root group=root mode=0644
 
 - name: Make CentOS Kickstart Directory
-  file: path=/opt/centos/kickstart state=directory
+  file: path=/opt/centos/kickstart state=directory owner=root group=root mode=0644
 
-#- name: Copy CentOS Iso
-#  copy: src=centos.iso dest=/opt/centos/iso/centos.iso
+- name: Stat CentOS Iso
+  stat: path=/opt/centos/iso/centos.iso
+  register: iso
+
+- name: Download CentOS Iso
+  get_url: url=http://dallas.tx.mirror.xygenhosting.com/CentOS/7/isos/x86_64/CentOS-7-x86_64-DVD-1511.iso dest=/opt/centos/iso/centos.iso owner=root group=root mode=0644
+  when: not iso.stat.exists
 
 - name: Copy CentOS Kickstart
-  copy: src=node.ks dest=/opt/centos/kickstart/node.ks
+  copy: src=node.ks dest=/opt/centos/kickstart/node.ks owner=root group=root mode=0644
 
 - name: Copy httpd Virtual Host PXE Boot
-  copy: src=httpd-pxeboot.conf dest=/etc/httpd/conf.d/pxeboot.conf
+  copy: src=httpd-pxeboot.conf dest=/etc/httpd/conf.d/pxeboot.conf owner=root group=root mode=0644
   notify:
     - httpd
 
 - name: Copy httpd Virtual Host Kickstart
-  copy: src=httpd-kickstart.conf dest=/etc/httpd/conf.d/kickstart.conf
+  copy: src=httpd-kickstart.conf dest=/etc/httpd/conf.d/kickstart.conf owner=root group=root mode=0644
   notify:
     - httpd
 
 - name: Copy default
-  copy: src=menu-default dest=/var/lib/tftpboot/pxelinux.cfg/default
+  copy: src=menu-default dest=/var/lib/tftpboot/pxelinux.cfg/default owner=root group=root mode=0644
   notify:
     - tftp
 
