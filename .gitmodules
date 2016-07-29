@@ -1,0 +1,6 @@
+[submodule "gateway-base"]
+	path = roles/gateway-base
+	url = git@github.com:SimpleGateway/gateway-base
+[submodule "roles/preseed-overlay"]
+	path = roles/preseed-overlay
+	url = git@github.com:SimpleGateway/preseed-overlay.git

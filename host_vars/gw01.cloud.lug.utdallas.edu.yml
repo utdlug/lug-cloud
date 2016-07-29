@@ -1,0 +1,119 @@
+---
+gw_network: 172.16.42.0
+
+dhcp_self: 172.16.42.1
+dhcp_lower: 172.16.42.5
+dhcp_upper: 172.16.42.64
+
+domain: cloud.lug.utdallas.edu
+hostname: gw01
+
+dns_SOA: 2016072901
+
+int_if: bge1
+ext_if: bge0
+ext_ip:
+ext_dns:
+
+boot_fname: pxelinux.0
+boot_next: 172.16.42.1
+
+ntp:
+- pool.ntp.org
+
+staticHosts:
+  controller00:
+    mac: 00:19:b9:c2:37:bd
+    addr: 172.16.42.2
+    name: controller
+  compute0:
+    mac: 00:1f:c6:75:68:ea
+    addr: 172.16.42.5
+    name: compute00
+  compute1:
+    mac: 00:1f:c6:44:e0:5b
+    addr: 172.16.42.6
+    name: compute01
+  compute02:
+    mac: 00:1f:c6:75:68:e3
+    addr: 172.16.42.7
+    name: compute02
+  compute03:
+    mac: 00:1f:c6:44:e0:68
+    addr: 172.16.42.8
+    name: compute03
+  compute04:
+    mac: 00:1f:c6:44:e0:6a
+    addr: 172.16.42.9
+    name: compute04
+  compute05:
+    mac: 00:1f:c6:44:e0:6d
+    addr: 172.16.42.10
+    name: compute05
+  compute06:
+    mac: 00:1f:c6:44:e0:65
+    addr: 172.16.42.11
+    name: compute06
+  compute07:
+    mac: 00:1f:c6:44:e0:64
+    addr: 172.16.42.12
+    name: compute07
+  compute08:
+    mac: 00:1f:c6:44:e0:5f
+    addr: 172.16.42.13
+    name: compute08
+  compute09:
+    mac: 00:1f:c6:44:e0:6b
+    addr: 172.16.42.14
+    name: compute09
+  compute10:
+    mac: 00:1f:c6:44:e0:66
+    addr: 172.16.42.15
+    name: compute10
+  compute11:
+    mac: 00:1f:c6:44:e0:6c
+    addr: 172.16.42.16
+    name: compute11
+  compute12:
+    mac: 00:1f:c6:44:e0:69
+    addr: 172.16.42.17
+    name: compute12
+  compute13:
+    mac: 00:1f:c6:44:df:cd
+    addr: 172.16.42.18
+    name: compute13
+  compute14:
+    mac: 00:1f:c6:44:df:ca
+    addr: 172.16.42.19
+    name: compute14
+  compute16:
+    mac: 00:1f:c6:44:df:cc
+    addr: 172.16.42.21
+    name: compute16
+  compute17:
+    mac: 00:1f:c6:44:df:c5
+    addr: 172.16.42.22
+    name: compute17
+  compute18:
+    mac: 00:1f:c6:44:df:cb
+    addr: 172.16.42.23
+    name: compute18
+  compute19:
+    mac: 00:1f:c6:44:df:d1
+    addr: 172.16.42.24
+    name: compute19
+  compute20:
+    mac: 00:1f:c6:44:df:bb
+    addr: 172.16.42.25
+    name: compute20
+  compute21:
+    mac: 00:1f:c6:44:df:c9
+    addr: 172.16.42.26
+    name: compute21
+
+stub-zones:
+  UTD:
+    name: utdallas.edu
+    addresses:
+      primary: 10.180.15.160
+      secondary: 10.182.70.107

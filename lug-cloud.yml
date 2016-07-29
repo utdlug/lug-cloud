@@ -1,5 +1,0 @@
----
-- hosts: lug-cloud
-  become: yes
-  roles:
-  - centos7-cluster

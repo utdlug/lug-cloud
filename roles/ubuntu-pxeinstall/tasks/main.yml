@@ -1,0 +1,12 @@
+---
+- name: Download the Ubuntu Installer
+  get_url: url=http://archive.ubuntu.com/ubuntu/dists/trusty-updates/main/installer-amd64/current/images/netboot/netboot.tar.gz dest=/tmp/netboot.tar.gz
+
+- name: Expand the Ubuntu Installer
+  unarchive: src=/tmp/netboot.tar.gz dest=/srv/tftpboot/ copy=no creates=/srv/tftpboot/pxelinux.0
+
+- name: Install the Boot Menu
+  copy: src=ubuntu-bootmenu.cfg dest=/srv/tftpboot/ubuntu-installer/amd64/boot-screens/txt.cfg owner=root group=wheel mode=0664
+
+- name: Install the preseed.cfg
+  copy: src=preseed.cfg dest=/var/www/htdocs/preseed/preseed.cfg owner=root group=wheel mode=0644
