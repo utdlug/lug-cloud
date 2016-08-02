@@ -29,12 +29,3 @@
 - name: Configure NTP
   copy: src=ntp.conf dest=/etc/ntp.conf owner=root group=root mode=0644
   notify: ntp
-
-- name: Enable bonding module
-  lineinfile: dest=/etc/modules line='bonding' state=present
-
-- name: Enable 8021q module
-  lineinfile: dest=/etc/modules line='8021q' state=present
-
-- name: Restart box
-  command: reboot
