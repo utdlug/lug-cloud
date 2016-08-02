@@ -30,12 +30,15 @@
        version={{ osa_version }}
 
 - name: Run Openstack Ansible
-  shell: scripts/bootstrap-ansible.sh
+  command: scripts/bootstrap-ansible.sh
   args:
     chdir: /opt/openstack-ansible
+    creates: /opt/ansible_*
 
 - name: Copy Openstack Ansible base configuration
   command: cp -r /opt/openstack-ansible/etc/openstack_deploy /etc/openstack_deploy
+  args:
+    creates: /etc/openstack_deploy
 
 - name: Copy Openstack Ansible configuration
   copy: src=openstack_user_config.yml dest=/etc/openstack_deploy/openstack_user_config.yml owner=root group=root mode=0644
