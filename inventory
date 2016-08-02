@@ -1,2 +1,9 @@
 [routers]
 gw01.cloud.lug.utdallas.edu
+
+[deploy-host]
+172.16.42.26
+
+[target-host]
+172.16.42.24
+172.16.42.2

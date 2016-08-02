@@ -1,0 +1,6 @@
+---
+- hosts: target-host
+  become: yes
+  roles:
+    - osa-target-host
+    
