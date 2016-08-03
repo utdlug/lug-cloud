@@ -1,2 +1,6 @@
 ---
-# handlers file for osa-target-host
+- name: ntp
+  service: name=ntp state=restarted
+
+- name: network
+  service: name:network state=restarted
