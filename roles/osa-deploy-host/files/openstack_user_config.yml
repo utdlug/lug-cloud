@@ -60,7 +60,7 @@ shared-infra_hosts:
 repo-infra_hosts:
   infra1:
     ip: 172.16.42.2
-
+  
 os-infra_hosts:
   infra1:
     ip: 172.16.42.2
@@ -68,7 +68,7 @@ os-infra_hosts:
 identity_hosts:
   infra1:
     ip: 172.16.42.2
-
+  
 network_hosts:
   infra1:
     ip: 172.16.42.2
@@ -81,6 +81,17 @@ storage-infra_hosts:
   infra1:
     ip: 172.16.42.2
 
+storage_hosts:
+  infra1:
+    ip: 172.16.42.2
+  
 log_hosts:
   infra1:
     ip: 172.16.42.2
+
+haproxy_hosts:
+  infra1:
+    ip: 172.16.42.2
+
+
+
