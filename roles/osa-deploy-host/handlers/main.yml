@@ -1,3 +1,10 @@
 ---
 - name: ntp
   service: name=ntp state=restarted
+
+- name: networking
+  command: ifup {{ item }}
+  with_items:
+    - vxlan-mgmt
+    - vxlan-storage
+    - vxlan-vxlan

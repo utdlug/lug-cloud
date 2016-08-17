@@ -10,7 +10,9 @@
     - openssh-server
     - python-dev
     - sudo
-
+    - tmux
+    - bridge-utils
+    
 - name: Configure NTP
   copy: src=ntp.conf dest=/etc/ntp.conf owner=root group=root mode=0644
   notify: ntp
@@ -24,6 +26,10 @@
 - name: Deploy public ssh key
   copy: src=id_rsa.pub dest=/root/.ssh/id_rsa.pub owner=root group=root mode=0644
 
+- name: Configure interfaces
+  template: src=interfaces dest=/etc/network/interfaces owner=root group=root mode=0644
+  notify: networking
+  
 - name: Clone Openstack Ansible repo
   git: repo=https://github.com/openstack/openstack-ansible.git
        dest=/opt/openstack-ansible/
@@ -42,3 +48,6 @@
 
 - name: Copy Openstack Ansible configuration
   copy: src=openstack_user_config.yml dest=/etc/openstack_deploy/openstack_user_config.yml owner=root group=root mode=0644
+
+- name: Copy Openstack Ansible user variables
+  copy: src=user_variables.yml dest=/etc/openstack_deploy/user_variables.yml owner=root group=root mode=0644
