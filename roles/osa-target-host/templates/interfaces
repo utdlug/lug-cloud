@@ -5,12 +5,18 @@
 auto lo
 iface lo inet loopback
 
+# Actual interface
 auto eth0
 iface eth0 inet dhcp
 
+# Virtual interface for br-vlan
+auto eth0:1
+iface eth0:1 inet manual
+
+# VXLAN interfaces
 auto vxlan-mgmt
 iface vxlan-mgmt inet manual
-	 pre-up ip link add vxlan-mgmt type vxlan id 10 group 239.0.0.10 dev eth0 || true
+	pre-up ip link add vxlan-mgmt type vxlan id 10 group 239.0.0.10 dev eth0 || true
 	up ip link set vxlan-mgmt up
 	down ip link set vxlan-mgmt down
 	post-down ip link del vxlan-mgmt || true
@@ -29,6 +35,7 @@ iface vxlan-storage inet manual
 	down ip link set vxlan-storage down
 	post-down ip link del vxlan-storage || true
 
+# Openstack Bridges
 auto br-mgmt
 iface br-mgmt inet static
 	bridge_stp off
@@ -51,7 +58,14 @@ auto br-storage
 iface br-storage inet static
 	bridge_stp off
 	bridge_waitport 0
+	bridge_fd 0
 	bridge_ports vxlan-storage
 	address 172.16.30.{{ ansible_default_ipv4.address.split('.')[-1] }}
 	netmask 255.255.255.0
 	 
+auto br-vlan
+iface br-vlan inet manual
+	bridge_stp off
+	bridge waitport 0
+	bridge_fd 0
+	bridge_ports eth0:1 

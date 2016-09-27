@@ -35,7 +35,7 @@
        dest=/opt/openstack-ansible/
        version={{ osa_version }}
 
-- name: Run Openstack Ansible
+- name: Bootstrap Openstack Ansible
   command: scripts/bootstrap-ansible.sh
   args:
     chdir: /opt/openstack-ansible
