@@ -4,12 +4,11 @@ cidr_networks:
   tunnel: 172.16.20.0/24
   
 used_ips:
-  - 172.16.42.1
   - "172.16.42.100,172.16.42.150"
-  - 172.16.42.26
-  - 172.16.10.26
-  - 172.16.20.26
-  - 172.16.30.26
+  - "172.16.42.1,172.16.42.26"
+  - "172.16.10.1,172.16.10.26"
+  - "172.16.20.1,172.16.20.26"
+  - "172.16.30.1,172.16.30.26"
   
 global_overrides:
   internal_lb_vip_address: 172.16.10.2
@@ -47,18 +46,6 @@ global_overrides:
         container_interface: "eth11"
         type: "flat"
         net_name: "flat"
-    - network:
-        container_bridge: "br-storage"
-        container_type: "veth"
-        container_interface: "eth2"
-        ip_from_q: "storage"
-        type: "raw"
-        group_binds:
-          - glance_api
-          - cinder_api
-          - cinder_volume
-          - nova_compute
-          - swift_proxy
         
 shared-infra_hosts:
   infra1:

@@ -10,8 +10,8 @@ auto eth0
 iface eth0 inet dhcp
 
 # Virtual interface for br-vlan
-auto eth0:1
-iface eth0:1 inet manual
+auto eth0:0
+iface eth0:0 inet manual
 
 # VXLAN interfaces
 auto vxlan-mgmt
@@ -68,4 +68,4 @@ iface br-vlan inet manual
 	bridge_stp off
 	bridge waitport 0
 	bridge_fd 0
-	bridge_ports eth0:1 
+	bridge_ports eth0:0 
