@@ -1,0 +1,12 @@
+[submodule "roles/sg-base"]
+	path = roles/sg-base
+	url = git@github.com:SimpleGateway/sg-base.git
+[submodule "roles/sg-ntp"]
+	path = roles/sg-ntp
+	url = git@github.com:SimpleGateway/sg-ntp.git
+[submodule "roles/sg-dns"]
+	path = roles/sg-dns
+	url = git@github.com:SimpleGateway/sg-dns.git
+[submodule "roles/sg-dhcp"]
+	path = roles/sg-dhcp
+	url = git@github.com:SimpleGateway/sg-dhcp.git
