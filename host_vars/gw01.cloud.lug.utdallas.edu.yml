@@ -3,21 +3,11 @@
 sg_common_int_ip: 172.16.42.1
 sg_common_network: 172.16.42.0
 
-sg_dhcp_pool_lower: 172.16.42.5
-sg_dhcp_pool_upper: 172.16.42.64
-sg_dhcp_pxeboot_fname: pxelinux.0
-sg_dhcp_pxeboot_next: 172.16.42.1
-
 sg_common_domain: cloud.lug.utdallas.edu
 sg_common_hostname: gw01
 
-sg_dns_SOA: 2016072901
-
 sg_common_int_if: bge1
 sg_common_ext_if: bge0
-
-sg_ntp:
-- pool.ntp.org
 
 sg_common_staticHosts:
   controller00:

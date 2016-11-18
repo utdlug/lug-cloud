@@ -3,8 +3,4 @@
   become: yes
   become_method: doas
   roles:
-    - gateway-base
-    - sg-dns
-    - sg-ntp
-    - sg-dhcp
-    - ubuntu-pxeinstall
+    - sg-base
