@@ -1,27 +1,25 @@
 ---
-gw_network: 172.16.42.0
 
-dhcp_self: 172.16.42.1
-dhcp_lower: 172.16.42.5
-dhcp_upper: 172.16.42.64
+sg_common_int_ip: 172.16.42.1
+sg_common_network: 172.16.42.0
 
-domain: cloud.lug.utdallas.edu
-hostname: gw01
+sg_dhcp_pool_lower: 172.16.42.5
+sg_dhcp_pool_upper: 172.16.42.64
+sg_dhcp_pxeboot_fname: pxelinux.0
+sg_dhcp_pxeboot_next: 172.16.42.1
 
-dns_SOA: 2016072901
+sg_common_domain: cloud.lug.utdallas.edu
+sg_common_hostname: gw01
 
-int_if: bge1
-ext_if: bge0
-ext_ip:
-ext_dns:
+sg_dns_SOA: 2016072901
 
-boot_fname: pxelinux.0
-boot_next: 172.16.42.1
+sg_common_int_if: bge1
+sg_common_ext_if: bge0
 
-ntp:
+sg_ntp:
 - pool.ntp.org
 
-staticHosts:
+sg_common_staticHosts:
   controller00:
     mac: 00:19:b9:c2:37:bd
     addr: 172.16.42.2
